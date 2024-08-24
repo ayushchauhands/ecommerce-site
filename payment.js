@@ -1,4 +1,4 @@
-// Helper function to format price
+// Helper function to format price with ₹ symbol
 const formatPrice = (price) => `₹${price.toFixed(2)}`;
 
 // Render checkout items
@@ -32,18 +32,21 @@ function renderCheckoutItems() {
   checkoutTotalElement.textContent = formatPrice(total);
 }
 
-// Complete the purchase (mock)
-function completePurchase() {
-  // Clear cart and redirect to home page
-  localStorage.removeItem("cart");
-  window.location.href = "payment.html";
-}
+// Handle payment form submission
+document
+  .getElementById("payment-form")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
 
-// Event listeners
+    // Here you would typically handle the payment logic (e.g., sending payment details to a server)
+    alert("Thank you for your purchase!");
+
+    // Clear cart and redirect to home page
+    localStorage.removeItem("cart");
+    window.location.href = "index.html";
+  });
+
+// Initial setup
 document.addEventListener("DOMContentLoaded", () => {
   renderCheckoutItems();
-
-  document
-    .getElementById("complete-purchase")
-    .addEventListener("click", completePurchase);
 });

@@ -240,3 +240,51 @@ a {
   text-decoration: none;
   color: #3498db;
 }
+
+/* Payment page styles */
+.payment-details {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.payment-details h2 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.payment-details h3 {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.payment-details label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.payment-details input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.payment-details .complete-purchase {
+  background-color: #2ecc71;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.payment-details .complete-purchase:hover {
+  background-color: #27ae60;
+}
