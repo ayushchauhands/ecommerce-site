@@ -196,3 +196,47 @@ main {
 .cart-summary .checkout:hover {
   background-color: #27ae60;
 }
+/* Checkout Styles */
+.checkout-details {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.checkout-details h2 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.checkout-summary {
+  padding-top: 10px;
+  text-align: right;
+}
+
+.checkout-summary .total {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.checkout-summary .checkout {
+  background-color: #2ecc71;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.checkout-summary .checkout:hover {
+  background-color: #27ae60;
+}
+
+a {
+  text-decoration: none;
+  color: #3498db;
+}

@@ -29,7 +29,7 @@ const products = [
 const cart = new Map(); // Using a Map to store cart items for efficient updates
 
 // Helper function to format price
-const formatPrice = (price) => `$${price.toFixed(2)}`;
+const formatPrice = (price) => `₹${price.toFixed(2)}`;
 
 // Render products
 function renderProducts() {
@@ -120,4 +120,61 @@ document.addEventListener("DOMContentLoaded", () => {
       removeFromCart(productId);
     }
   });
+});
+
+// Store cart in localStorage
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(Array.from(cart.entries())));
+}
+
+// Add product to cart
+function addToCart(productId) {
+  const product = products.find((p) => p.id === productId);
+  if (!product) return;
+
+  const cartItem = cart.get(productId);
+  if (cartItem) {
+    cartItem.quantity += 1;
+  } else {
+    cart.set(productId, { ...product, quantity: 1 });
+  }
+
+  saveCart();
+  renderCart();
+}
+
+// Remove item from cart
+function removeFromCart(productId) {
+  if (cart.has(productId)) {
+    cart.delete(productId);
+    saveCart();
+    renderCart();
+  }
+}
+
+// Navigate to checkout
+function goToCheckout() {
+  saveCart();
+  window.location.href = "checkout.html";
+}
+
+// Event listeners
+document.addEventListener("DOMContentLoaded", () => {
+  renderProducts();
+
+  document.getElementById("product-list").addEventListener("click", (e) => {
+    if (e.target.classList.contains("add-to-cart")) {
+      const productId = parseInt(e.target.getAttribute("data-id"), 10);
+      addToCart(productId);
+    }
+  });
+
+  document.getElementById("cart-items").addEventListener("click", (e) => {
+    if (e.target.classList.contains("remove-item")) {
+      const productId = parseInt(e.target.getAttribute("data-id"), 10);
+      removeFromCart(productId);
+    }
+  });
+
+  document.querySelector(".checkout").addEventListener("click", goToCheckout);
 });
